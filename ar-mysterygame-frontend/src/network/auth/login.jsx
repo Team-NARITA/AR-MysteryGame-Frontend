@@ -1,19 +1,33 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { auth } from "./firebase"
 import { signInWithRedirect, GoogleAuthProvider, getRedirectResult } from "firebase/auth";
 import { useEffect } from "react";
+import Load from '../../Load';
 
 const Login = () => {
     const provider = new GoogleAuthProvider();
 
     const clickLogin = () => {
+        sessionStorage.setItem('loading','true')
         signInWithRedirect(auth, provider);
     }
 
     useEffect(() => {
+
+        const loading = sessionStorage.getItem('loading');
+        if(loading == 'true') {
+            ReactDOM.hydrateRoot(document.getElementById('home')).render(
+                <Load></Load>
+            )
+        }
+
         getRedirectResult(auth)
         .then((result) => {
             const credental = GoogleAuthProvider.credentialFromResult(result);
-            console.log(credental);
+            localStorage.setItem('armysteryid',credental.accessToken);
+            localStorage.setItem('armysteryaccess',credental.idToken);
+            window.location.reload();
         })
         .catch((error) => {
             console.log(error)

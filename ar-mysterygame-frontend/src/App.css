@@ -43,3 +43,88 @@ body {
 .Startbutton:active {
   background-color: #426fa3;
 }
+
+.Inputbox {
+  display: flex;
+  flex-direction: column;
+  margin-block: 80px;
+  width: 60%;
+}
+
+.Usernamebox {
+  max-width: 100%;
+  padding-block: 10px;
+  padding-inline:20px;
+  font-size: 15px;
+  border: solid 1px #5B42DE;
+  border-radius: 5px;
+  align-items: center;
+  color: #262626;
+  transition: 0.3s;
+  margin-top: 5px;
+}
+.Usernamebox:focus {
+  margin-top: 0;
+  padding-block: 15px;
+  outline: none;
+}
+
+.Homecontent h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #262626;
+}
+
+.Submitbutton {
+  margin-block: 10px;
+  color: #FFFFFF;
+  background-color: #5B42DE;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  padding-block: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.Loadwrapper {
+  display: flex;
+}
+
+.Loadbox {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #262626;
+  margin: 5px;
+}
+.Loadwrapper #l1 {
+  animation: flash 1s linear infinite;
+}
+.Loadwrapper #l2 {
+  animation: flash 1.1s linear infinite;
+}
+.Loadwrapper #l3 {
+  animation: flash 1.2s linear infinite;
+}
+.Loadwrapper #l4 {
+  animation: flash 1.3s linear infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+  
+  
+  100% {
+    opacity: 1;
+  }
+}

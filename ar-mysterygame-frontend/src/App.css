@@ -1,42 +1,45 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Kaku+Gothic+Antique:wght@900&display=swap');
+
+body {
+  margin: 0;
+  background-color: #FFFFFF;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.NaritaApp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.Fullsizeimg {
+  width: 100%;
+  height: auto;
 }
 
-.card {
-  padding: 2em;
+.Littleopacity {
+  opacity: 0.8;
 }
 
-.read-the-docs {
-  color: #888;
+.Startbutton {
+  width: 60%;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  padding-block: 15px;
+  font-size: 20px;
+  background-color: #5A9AE2;
+  border: none;
+  border-radius: 10px;
+  margin-block: 100px;
+}
+
+.Startbutton:active {
+  background-color: #426fa3;
 }

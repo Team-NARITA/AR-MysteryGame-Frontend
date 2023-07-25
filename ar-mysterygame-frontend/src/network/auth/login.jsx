@@ -21,7 +21,7 @@ const Login = () => {
     }, [])
 
     return (
-        <button className="Startbutton" onClick={() => clickLogin()}>ゲームをはじめる</button>
+        <button className="Startbutton" onClick={() => clickLogin()}>ログインして開始</button>
     )
 }
 

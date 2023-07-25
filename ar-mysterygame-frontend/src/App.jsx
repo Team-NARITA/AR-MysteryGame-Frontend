@@ -1,12 +1,15 @@
 import React from 'react'
-import mainvisual from './assets/main-visual.png'
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './elements/Home';
 import './App.css'
 
 function App() {
   return (
     <div className="NaritaApp">
-      <img className="Fullsizeimg Littleopacity" src={mainvisual} alt="メイン画像"></img>
-      <button className="Startbutton">ゲームをはじめる</button>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   )
 }

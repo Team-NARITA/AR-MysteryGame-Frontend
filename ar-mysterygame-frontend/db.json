@@ -1,0 +1,24 @@
+{
+    "register": [
+        {
+            "userId": "1",
+            "userName": "ArMystery",
+            "createAt": 99999999999,
+            "roleId": 1,
+            "solvedMystery": [
+                "M1",
+                "M2",
+                "M3"
+            ],
+            "clearedChaper": [
+                "C1",
+                "C2",
+                "C3"
+            ],
+            "usedCoupon": [
+                "Coupon1",
+                "Coupon2"
+            ]
+        }
+    ]
+}

@@ -17,7 +17,7 @@ const Login = () => {
 
         const loading = sessionStorage.getItem('loading');
         if(loading == 'true') {
-            ReactDOM.hydrateRoot(document.getElementById('home')).render(
+            ReactDOM.createRoot(document.getElementById('home')).render(
                 <Load></Load>
             )
         }

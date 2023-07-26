@@ -90,6 +90,10 @@ body {
   border: none;
 }
 
+.Submitbutton:active {
+  background-color: #4a36b1;
+}
+
 .Loadwrapper {
   display: flex;
 }
@@ -100,18 +104,19 @@ body {
   border-radius: 30px;
   background-color: #262626;
   margin: 5px;
-}
-.Loadwrapper #l1 {
   animation: flash 1s linear infinite;
 }
+.Loadwrapper #l1 {
+  animation-delay: 0.1s;
+}
 .Loadwrapper #l2 {
-  animation: flash 1.1s linear infinite;
+  animation-delay: 0.2s;
 }
 .Loadwrapper #l3 {
-  animation: flash 1.2s linear infinite;
+  animation-delay: 0.3s;
 }
 .Loadwrapper #l4 {
-  animation: flash 1.3s linear infinite;
+  animation-delay: 0.4s;
 }
 
 @keyframes flash {

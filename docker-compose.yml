@@ -6,6 +6,7 @@ services:
     container_name: ar-mysterygame-frontend
     ports:
       - "5173:5173"
+      - "3100:3100"
     volumes:
       - ./:/ar-mysterygame/
     working_dir: /ar-mysterygame/

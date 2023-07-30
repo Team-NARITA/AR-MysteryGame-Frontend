@@ -1,20 +1,20 @@
 import {getRedirectResult, GoogleAuthProvider, signInWithRedirect} from "firebase/auth";
 import { auth } from "../network/auth/firebase";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 
 import gameLogo from '../assets/main-visual.png';
 
 const LoginPage = () => {
-    const provider = new GoogleAuthProvider();
+    const [isLoading, setLoading] = useState(false); 
     const navigate = useNavigate();
-    const clickLogin = () => {
-        signInWithRedirect(auth, provider);
-    }
 
     useEffect(() => {
+        setLoading(sessionStorage.getItem("loading") ? true : false);
         getRedirectResult(auth)
             .then((result) => {
+                sessionStorage.clear();
+                setLoading(false);
                 if (result == null) return;
                 console.log(result);
                 navigate("/");
@@ -24,6 +24,19 @@ const LoginPage = () => {
         )
     }, []);
 
+    return (
+        <>
+            {isLoading ? <div>Loading...</div>: <LoginView/>}
+        </>
+    );
+}
+
+const LoginView = () => {
+    const provider = new GoogleAuthProvider();
+    const clickLogin = () => {
+        sessionStorage.setItem('loading','true');
+        signInWithRedirect(auth, provider);
+    }
     return (
         <div className="Homecontent" id="home">
             <img className="Fullsizeimg Littleopacity" src={gameLogo} alt="ロゴ"></img>

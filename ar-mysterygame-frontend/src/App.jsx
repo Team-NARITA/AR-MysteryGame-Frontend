@@ -29,12 +29,14 @@ function App() {
         if (user != null) {
             return props.component;
         }
+        return (<>ログインしてください</>);
     }
 
     const RequireNoAuth = ( props ) => {
         if (user == null) {
             return props.component;
         }
+        return (<>既にログインしています</>);
     }
 
     return (

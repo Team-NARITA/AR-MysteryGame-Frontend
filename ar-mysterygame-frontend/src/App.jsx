@@ -16,9 +16,7 @@ function App() {
         const authStateChange = auth.onAuthStateChanged((user) => {
             if (user) {
                 setUser(user);
-                console.log("login!!");
             } else {
-                console.log("test");
                 navigate("/login");
             }
         });
@@ -31,14 +29,12 @@ function App() {
         if (user != null) {
             return props.component;
         }
-        navigate("/login");
     }
 
     const RequireNoAuth = ( props ) => {
         if (user == null) {
             return props.component;
         }
-        navigate("/");
     }
 
     return (

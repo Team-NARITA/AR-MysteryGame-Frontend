@@ -20,7 +20,6 @@ const HomePage = () => {
         {
             gameUser ? <UserInfoView userInfo={gameUser} setGameUser={setGameUser}/> : <Loading />
         }
-        <HomeButton />
         </>
     );
 }
@@ -37,12 +36,9 @@ const UserInfoView = (props) => {
     }
 
     return (
-        <>
-            <p>userId: {gameUser.userId}</p>
-            <p>userName: {gameUser.userName}</p>
-            <p>role: {gameUser.role}</p>
-            <p>createAt: {gameUser.createAt}</p>
-        </>
+        <div className="homemenu">
+            
+        </div>
     );
 }
 

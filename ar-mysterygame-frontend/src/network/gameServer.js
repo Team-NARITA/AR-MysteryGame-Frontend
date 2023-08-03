@@ -29,7 +29,7 @@ class GameServer {
             "Content-Type": "application/json"
         }
         axios.post(this.baseUrl + endpoint, param, { headers: header }
-        ).catch((response) => {
+        ).then((response) => {
             console.log(response);
             callback(response);
         }).catch(error => {

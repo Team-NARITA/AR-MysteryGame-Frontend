@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import gameServer from "../network/gameServer";
 
+import "./home/HomePage.css"
+import RegisterModal from "./home/RegisterModal";
+
 const HomePage = () => {
     const [gameUser, setGameUser] = useState(null);
 
     useEffect(() => {
-        gameServer.get("/v1/users/self", {userId: gameServer.getUserId()}, (response) => {
+        gameServer.get("/v1/users/self", {}, (response) => {
             if (response == null) return
             setGameUser(response.data);
         });
@@ -13,17 +16,22 @@ const HomePage = () => {
 
     return (
         <>
-            <h2>ログイン完了</h2>
-            <UserInfoView userInfo={gameUser} />
+        {
+            gameUser ? <UserInfoView userInfo={gameUser}/> : <Loading />
+        }
         </>
     );
+}
+
+const Loading = () => {
+    return (<div>Loading...</div>);
 }
 
 const UserInfoView = (props) => {
     const gameUser = props.userInfo;
 
-    if (gameUser == null) {
-        return <></>;
+    if (gameUser.role == "UNREGISTER_USER") {
+        return (<RegisterModal />);
     }
 
     return (

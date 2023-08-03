@@ -3,8 +3,12 @@
     display: flex;
     flex-direction: column;
     margin-block: 80px;
-    width: 60%;
+    width: 65%;
     text-align: center;
+}
+
+.input-box h2 {
+    width: 100%;
 }
 
 .username-box {

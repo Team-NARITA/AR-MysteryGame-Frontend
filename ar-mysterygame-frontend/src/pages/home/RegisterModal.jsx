@@ -37,7 +37,7 @@ const InputArea = (( props ) => {
     
     return (
         <form className="input-box" onSubmit={handleSubmit(onSubmit)}>
-            <h1>ニックネームを決めてください</h1>
+            <h2>ニックネームを決めてください</h2>
             <input type="text" className="username-box" placeholder="ニックネーム" {...register("username", {required: true, minLength:3, maxLength: 20})}></input>
             <input type="submit" value="登録する!" className="submit-button"></input>
         </form>

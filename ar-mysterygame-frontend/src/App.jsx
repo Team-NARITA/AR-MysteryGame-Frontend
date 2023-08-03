@@ -40,7 +40,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className="app">
             <Routes>
                 <Route path="/login" element={<RequireNoAuth component={<LoginPage />} />} />
                 <Route path="/" element={<RequireAuth component={<HomePage />} />} />

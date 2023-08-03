@@ -17,7 +17,7 @@ const HomePage = () => {
     return (
         <>
         {
-            gameUser ? <UserInfoView userInfo={gameUser}/> : <Loading />
+            gameUser ? <UserInfoView userInfo={gameUser} setGameUser={setGameUser}/> : <Loading />
         }
         </>
     );
@@ -31,7 +31,7 @@ const UserInfoView = (props) => {
     const gameUser = props.userInfo;
 
     if (gameUser.role == "UNREGISTER_USER") {
-        return (<RegisterModal />);
+        return (<RegisterModal setGameUser={props.setGameUser}/>);
     }
 
     return (

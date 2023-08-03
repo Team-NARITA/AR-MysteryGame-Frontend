@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import gameServer from "../../network/gameServer";
 
 import mainvisual from '../../assets/main-visual.png';
@@ -6,7 +7,7 @@ import mainvisual from '../../assets/main-visual.png';
 const RegisterModal = ( props ) => {
     const setGameUser = props.setGameUser;
 
-    const register = ( username ) => {
+    const registerAccount = ( username ) => {
         gameServer.post("/v1/users/register", {
             "username": username
         }, (response) => {
@@ -17,29 +18,29 @@ const RegisterModal = ( props ) => {
     return (
         <div className="modal">
             <img className="fullsize-img little-opacity" src={mainvisual} alt="メイン画像"></img>
-            <InputArea register={register}/>
+            <InputArea registerAccount={registerAccount}/>
         </div>
     );
 }
 
 const InputArea = (( props ) => {
-    const register = props.register;
-    const [username, setUsername] = useState("");
+    const registerAccount = props.registerAccount;
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
-    const handleChange = (event) => {
-        setUsername(event.target.value);
-    }
-
-    const handleClick = () => {
-        register(username);
+    const onSubmit = (data) => {
+        registerAccount(data.username);
     }
     
     return (
-        <div className="input-box">
+        <form className="input-box" onSubmit={handleSubmit(onSubmit)}>
             <h1>ニックネームを決めてください</h1>
-            <input type="text" className="username-box" placeholder="ニックネーム" onChange={handleChange}></input>
-            <button className="submit-button" onClick={handleClick}>登録する!</button>
-        </div>
+            <input type="text" className="username-box" placeholder="ニックネーム" {...register("username", {required: true, minLength:3, maxLength: 20})}></input>
+            <input type="submit" value="登録する!" className="submit-button"></input>
+        </form>
     )
 });
 

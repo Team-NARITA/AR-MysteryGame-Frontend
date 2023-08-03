@@ -1,0 +1,30 @@
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+.footer .button-left {
+    flex-grow: 1;
+    background-color: rgba(80, 162, 233, .7);
+    border-radius: 0 10px 0 0;
+}
+
+.footer .wrap {
+    background-color: rgba(80, 162, 233, .7);
+}
+
+.footer .button-area {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0 0 80% 80%;
+    height: 95%;
+    aspect-ratio: 1/1;
+}
+
+.footer .button-right {
+    flex-grow: 1;
+    background-color: rgba(80, 162, 233, .7);
+    border-radius: 10px 0 0 0;
+}

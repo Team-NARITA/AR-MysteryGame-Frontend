@@ -3,6 +3,7 @@ import gameServer from "../network/gameServer";
 
 import "./home/HomePage.css"
 import RegisterModal from "./home/RegisterModal";
+import HomeButton from "./common/HomeButton";
 
 const HomePage = () => {
     const [gameUser, setGameUser] = useState(null);
@@ -19,6 +20,7 @@ const HomePage = () => {
         {
             gameUser ? <UserInfoView userInfo={gameUser} setGameUser={setGameUser}/> : <Loading />
         }
+        <HomeButton />
         </>
     );
 }

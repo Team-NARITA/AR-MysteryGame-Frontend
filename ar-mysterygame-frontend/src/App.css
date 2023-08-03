@@ -1,47 +1,8 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Kaku+Gothic+Antique:wght@900&display=swap');
 
 body {
   margin: 0;
   background-color: #FFFFFF;
-}
-
-.Homecontent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1000px;
-  width: 100%;
-}
-
-.Fullsizeimg {
-  width: 100%;
-  height: auto;
-}
-
-.Littleopacity {
-  opacity: 0.8;
-}
-
-.Startbutton {
-  width: 60%;
-  color: #FFFFFF;
-  font-family: 'Open Sans', sans-serif;
-  font-family: 'Zen Kaku Gothic Antique', sans-serif;
-  padding-block: 15px;
-  font-size: 20px;
-  background-color: #5A9AE2;
-  border: none;
-  border-radius: 10px;
-  margin-block: 100px;
-}
-
-.Startbutton:active {
-  background-color: #426fa3;
 }
 
 .Inputbox {

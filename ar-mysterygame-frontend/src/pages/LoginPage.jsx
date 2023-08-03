@@ -3,6 +3,7 @@ import { auth } from "../network/auth/firebase";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 
+import "./login/LoginPage.css"
 import gameLogo from '../assets/main-visual.png';
 
 const LoginPage = () => {
@@ -38,9 +39,9 @@ const LoginView = () => {
         signInWithRedirect(auth, provider);
     }
     return (
-        <div className="Homecontent" id="home">
-            <img className="Fullsizeimg Littleopacity" src={gameLogo} alt="ロゴ"></img>
-            <button className="Startbutton" onClick={() => clickLogin()}>ログインして開始</button>
+        <div className="home-content">
+            <img className="fullsize-img little-opacity" src={gameLogo} alt="ロゴ"></img>
+            <button className="start-button" onClick={() => clickLogin()}>ログインして開始</button>
         </div>
     );
 }

@@ -24,7 +24,7 @@ class GameServer {
     async post(endpoint, param, callback) {
         console.log("PostRequest: " + endpoint);
         const token = await this.getToken();
-        axios.get(this.baseUrl + endpoint, {
+        axios.post(this.baseUrl + endpoint, {
             headers: {
                 Authorization: `Bearer ${token}`
             },

@@ -1,0 +1,37 @@
+.load-wrapper {
+    display: flex;
+}
+
+.load-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #262626;
+    margin: 5px;
+    animation: flash 1s linear infinite;
+}
+.load-wrapper #l1 {
+    animation-delay: 0.1s;
+}
+.load-wrapper #l2 {
+    animation-delay: 0.2s;
+}
+.load-wrapper #l3 {
+    animation-delay: 0.3s;
+}
+.load-wrapper #l4 {
+    animation-delay: 0.4s;
+}
+  
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -52,3 +52,20 @@
 .submit-button:active {
     background-color: #4a36b1;
 }
+
+#homemenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.app-icon {
+    width: 65px;
+    aspect-ratio: 1/1;
+
+    margin: 20px 10px;
+    padding: 10px;
+    
+    border-radius: 10px;
+    background-color: aqua;
+}

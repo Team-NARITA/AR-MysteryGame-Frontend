@@ -6,7 +6,7 @@ import { auth } from "./network/auth/firebase";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 
-import "./App.css"
+import "./App.css";
 
 function App() {
     const [user, setUser] = useState(null);

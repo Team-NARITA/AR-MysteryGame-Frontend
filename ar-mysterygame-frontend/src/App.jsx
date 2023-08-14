@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 
 import "./App.css"
+import MemoPage from "./pages/MemoPage";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -44,6 +45,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<RequireNoAuth component={<LoginPage />} />} />
                 <Route path="/" element={<RequireAuth component={<HomePage />} />} />
+                <Route path="/test" element={<MemoPage/>}></Route>
             </Routes>
         </div>
     );

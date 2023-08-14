@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Kaku+Gothic+Antique:wght@900&display=swap');
+.Memolist {
+    height: 50px;
+    background-color: #E2CC5B;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    color: #262626;
+  }
+  
+  .footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+  
+    height: 75px;
+    width: 100%;
+  }
+  
+  .footer .button-left {
+    flex-grow: 1;
+    background-color: #E2CC5B;
+    border-radius: 0 20px 0 0;
+  }
+  
+  .footer .wrap {
+    background-color: #E2CC5B;
+  }
+  
+  .footer .button-area {
+    background-color: white;
+    border-radius: 0 0 80% 80%;
+  
+    height: 95%;
+    aspect-ratio: 1/1;
+  }
+  
+  .footer .button-right {
+    flex-grow: 1;
+    background-color: #E2CC5B;
+    border-radius: 20px 0 0 0;
+  }
+  
+  .Memobox {
+    width: 90%;
+    height: 150px;
+    margin: 10px auto 0px;
+    border-radius:20px;
+    overflow: hidden;
+  }
+  
+  .Memocontent {
+    height: 105px;
+    background-color: #C0DDF2;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .Memobutton_area {
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 0 20px;
+    box-sizing: border-box;
+    background-color: #E2CC5B;
+  }
+
+  .Deletebutton {
+    font-size: 30px;
+    color: #C13128;
+  }
+
+  .Inputtrans {
+    font-size: 30px;
+    color: #C0DDF2;
+  }
+
+  .Memoheader {
+    height: 50px;
+    background-color: #E2CC5B;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    color: #262626;
+  }
+
+  #Memotext {
+    resize:horizontal;
+    width: 100%;
+  }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Kaku+Gothic+Antique:wght@900&display=swap');
 
-.app {
+#root {
     height: 100vh;
     width: 100vw;
     background-color: #FFFFFF;

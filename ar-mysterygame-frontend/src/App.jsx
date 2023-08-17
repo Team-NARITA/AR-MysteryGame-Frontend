@@ -16,6 +16,7 @@ function App() {
             <AuthUserProvider>
                 <Routes>
                     <Route path="/" element={<RouteAuthGuard component={<HomePage />} redirect="/login" />}></Route>
+                    <Route path="/naritalk" element={<RouteAuthGuard component={<NaritalkPage />} redirect="/login" />} ></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
             </AuthUserProvider>

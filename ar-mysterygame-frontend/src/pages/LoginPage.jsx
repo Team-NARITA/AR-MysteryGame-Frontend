@@ -7,8 +7,7 @@ import "./login/LoginPage.css"
 import gameLogo from '../assets/main-visual.png';
 
 const LoginPage = () => {
-    const [isLoading, setLoading] = useState(false); 
-    const navigate = useNavigate();
+    const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(sessionStorage.getItem("loading") ? true : false);
@@ -18,7 +17,6 @@ const LoginPage = () => {
                 setLoading(false);
                 if (result == null) return;
                 console.log(result);
-                navigate("/");
             }).catch((error) => {
                 console.log(error);
             }

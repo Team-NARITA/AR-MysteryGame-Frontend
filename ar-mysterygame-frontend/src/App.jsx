@@ -8,17 +8,18 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { RouteAuthGuard } from "./pages/common/RouteAuthGuard";
 import { AuthUserProvider } from "./network/auth/AuthUserProvider";
+import NaritalkPage from "./pages/NaritalkPage";
 
 function App() {
     return (
-        <AuthUserProvider>
-            <BrowserRouter>
+        <BrowserRouter>
+            <AuthUserProvider>
                 <Routes>
                     <Route path="/" element={<RouteAuthGuard component={<HomePage />} redirect="/login" />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
-            </BrowserRouter>
-        </AuthUserProvider>
+            </AuthUserProvider>
+        </BrowserRouter>
     );
 }
 

@@ -8,7 +8,6 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { RouteAuthGuard } from "./pages/common/RouteAuthGuard";
 import { AuthUserProvider } from "./network/auth/AuthUserProvider";
-import NaritalkPage from "./pages/NaritalkPage";
 
 function App() {
     return (

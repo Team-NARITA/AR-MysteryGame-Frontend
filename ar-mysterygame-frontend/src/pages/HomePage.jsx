@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import gameServer from "../network/gameServer";
 
 import "./home/HomePage.css";
@@ -37,7 +38,7 @@ const HomeMenuView = (props) => {
     }
 
     const [ applist, setApplist ] = useState([
-        {id: "1", name: "naritalk"},
+        {id: "1", name: "naritalk", path: "/naritalk"},
         {id: "2", name: "naritter"},
         {id: "3", name: "クーポン"},
         {id: "4", name: "メモ"},
@@ -49,7 +50,9 @@ const HomeMenuView = (props) => {
         <ReactSortable list={applist} setList={setApplist} delay={400} id="homemenu">
             {
                 applist.map((item) => (
-                    <div key={item.id} className="app-icon">{item.name}</div>
+                    <Link to={item.path} key={item.id}>
+                        <div key={item.id} className="app-icon">{item.name}</div>
+                    </Link>
                 ))
             }
         </ReactSortable>

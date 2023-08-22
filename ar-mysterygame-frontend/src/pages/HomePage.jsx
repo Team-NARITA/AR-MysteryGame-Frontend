@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import gameServer from "../network/gameServer";
 
 import "./home/HomePage.css";
@@ -33,6 +33,7 @@ const Loading = () => {
 
 const HomeMenuView = (props) => {
     const gameUser = props.userInfo;
+    const navigate = useNavigate();
     if (gameUser.role === "UNREGISTER_USER") {
         return (<RegisterModal setGameUser={(props.setGameUser)} />)
     }
@@ -50,9 +51,9 @@ const HomeMenuView = (props) => {
         <ReactSortable list={applist} setList={setApplist} delay={400} id="homemenu">
             {
                 applist.map((item) => (
-                    <Link to={item.path} key={item.id}>
-                        <div key={item.id} className="app-icon">{item.name}</div>
-                    </Link>
+                    <div key={item.id} className="app-icon" onClick={() => navigate(item.path)}>
+                        {item.name}
+                    </div>
                 ))
             }
         </ReactSortable>

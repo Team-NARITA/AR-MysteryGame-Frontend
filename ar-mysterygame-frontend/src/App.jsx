@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { RouteAuthGuard } from "./pages/common/RouteAuthGuard";
 import { AuthUserProvider } from "./network/auth/AuthUserProvider";
 import NaritalkPage from "./pages/NaritalkPage";
+import TalkPage from "./pages/naritalk/TalkPage";
 
 function App() {
     return (
@@ -16,7 +17,8 @@ function App() {
             <AuthUserProvider>
                 <Routes>
                     <Route path="/" element={<RouteAuthGuard component={<HomePage />} redirect="/login" />}></Route>
-                    <Route path="/naritalk" element={<RouteAuthGuard component={<NaritalkPage />} redirect="/login" />} ></Route>
+                    <Route path="/naritalk" element={<RouteAuthGuard component={<NaritalkPage />} redirect="/login" />}></Route>
+                    <Route path="/naritalk/:id" element={<RouteAuthGuard component={<TalkPage />} redirect="/login" />}></Route>
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
             </AuthUserProvider>

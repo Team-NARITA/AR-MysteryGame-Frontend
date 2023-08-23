@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import gameServer from "../../network/gameServer";
 
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+import "./ChapterList.css"
+
 const ChapterList = () => {
     const [chapterList, setChapterList] = useState([]);
     useEffect(() => {
@@ -24,7 +28,10 @@ const ChapterListItem = (props) => {
     const navigate = useNavigate();
     
     return (
-        <div onClick={() => navigate("./"+chapterData.chapterId)}>{chapterData.chapterName}</div>
+        <div className="chapterlist-item" onClick={() => navigate("./"+chapterData.chapterId)}>
+            <h2 className="name">{chapterData.chapterName}</h2>
+            <ArrowForwardIosIcon className="arrow-icon" />
+        </div>
     )
 }
 

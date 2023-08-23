@@ -13,7 +13,7 @@ const ChapterList = () => {
     return (
         <>
         {
-            chapterList.map((chapter) => (<ChapterListItem chapter={chapter} />))
+            chapterList.map((chapter) => (<ChapterListItem key={chapter.chapterId} chapter={chapter} />))
         }
         </>
     )
@@ -24,7 +24,7 @@ const ChapterListItem = (props) => {
     const navigate = useNavigate();
     
     return (
-        <div key={chapterData.chapterId} onClick={() => navigate("./"+chapterData.chapterId)}>{chapterData.chapterName}</div>
+        <div onClick={() => navigate("./"+chapterData.chapterId)}>{chapterData.chapterName}</div>
     )
 }
 

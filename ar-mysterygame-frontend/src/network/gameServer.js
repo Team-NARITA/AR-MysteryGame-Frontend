@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 
 class GameServer {
-    baseUrl = "https://api.rain1208.com";
+    baseUrl = "http://localhost:8080";
 
     async get(endpoint, param, callback) {
         console.log("GetRequest: " + endpoint);

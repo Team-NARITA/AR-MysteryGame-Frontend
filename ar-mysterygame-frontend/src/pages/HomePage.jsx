@@ -34,9 +34,6 @@ const Loading = () => {
 const HomeMenuView = (props) => {
     const gameUser = props.userInfo;
     const navigate = useNavigate();
-    if (gameUser.role === "UNREGISTER_USER") {
-        return (<RegisterModal setGameUser={(props.setGameUser)} />)
-    }
 
     const [ applist, setApplist ] = useState([
         {id: "1", name: "naritalk", path: "/naritalk"},
@@ -45,7 +42,11 @@ const HomeMenuView = (props) => {
         {id: "4", name: "メモ"},
         {id: "5", name: "ゲーム情報"},
         {id: "6", name: "ARアプリ"},
-    ])
+    ]);
+
+    if (gameUser.role === "UNREGISTER_USER") {
+        return (<RegisterModal setGameUser={(props.setGameUser)} />)
+    }
 
     return (
         <ReactSortable list={applist} setList={setApplist} delay={400} id="homemenu">

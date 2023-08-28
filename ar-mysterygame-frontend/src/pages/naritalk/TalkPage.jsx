@@ -24,7 +24,7 @@ const TalkPage = () => {
                 type: "message",
                 message: "こんにちは",
                 sender: "rain1208",
-                direction: "incomming"
+                direction: "incoming"
             },
             {
                 type: "message",
@@ -37,7 +37,7 @@ const TalkPage = () => {
                 image: "https://media.discordapp.net/attachments/1095617215291719710/1143782884428234852/001.png",
                 imageAlt: "image sample",
                 sender: "rain1208",
-                direction: "incomming"
+                direction: "incoming"
             },
             {
                 type: "message",
@@ -56,7 +56,7 @@ const TalkPage = () => {
                     <ChatContainer>
                         <MessageList typingIndicator={typingIndicator}>
                             {
-                                chatLogs.map((item, i) => (<ChatMessage key={i} chatLog={item} />))
+                                chatLogs.map((item, i) => toChatMessage(i, item))
                             }
                         </MessageList>
                         <MessageInput attachButton={false} />
@@ -68,29 +68,29 @@ const TalkPage = () => {
     )
 }
 
-const ChatMessage = (props) => {
-    const chatLog = props.chatLog;
+const toChatMessage = (key, chatItem) => {
     
-    switch (chatLog.type) {
+    switch (chatItem.type) {
         case "message": 
             return (
-                <Message model={{
-                    message: chatLog.message,
-                    sender: chatLog.sender,
-                    direction: chatLog.direction,
-                    position: "single"
+                <Message key={key} model={{
+                    message: chatItem.message,
+                    sender: chatItem.sender,
+                    direction: chatItem.direction,
+                    position: "normal"
                 }}>
-                    <Message.Header sender={chatLog.sender} />
+                    <Message.Header sender={chatItem.sender} />
                 </Message>
             )
         case "image":
             return (
-                <Message model={{
-                    sender: chatLog.sender,
-                    direction: chatLog.direction
+                <Message key={key} model={{
+                    sender: chatItem.sender,
+                    direction: chatItem.direction,
+                    position: "normal"
                 }}>
-                    <Message.Header sender={chatLog.sender} />
-                    <Message.ImageContent src={chatLog.image} alt={chatLog.imageAlt} width="70vw"/>
+                    <Message.Header sender={chatItem.sender} />
+                    <Message.ImageContent src={chatItem.image} alt={chatItem.imageAlt} width="70vw"/>
                 </Message>
             )
     }

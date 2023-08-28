@@ -77,7 +77,7 @@ const toChatMessage = (key, chatItem) => {
                     message: chatItem.message,
                     sender: chatItem.sender,
                     direction: chatItem.direction,
-                    position: "normal"
+                    position: "first"
                 }}>
                     <Message.Header sender={chatItem.sender} />
                 </Message>
@@ -87,7 +87,7 @@ const toChatMessage = (key, chatItem) => {
                 <Message key={key} model={{
                     sender: chatItem.sender,
                     direction: chatItem.direction,
-                    position: "normal"
+                    position: "first"
                 }}>
                     <Message.Header sender={chatItem.sender} />
                     <Message.ImageContent src={chatItem.image} alt={chatItem.imageAlt} width="70vw"/>

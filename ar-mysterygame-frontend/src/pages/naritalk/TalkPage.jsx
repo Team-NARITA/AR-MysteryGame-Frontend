@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import gameServer from "../../network/gameServer";
 
@@ -11,6 +11,7 @@ import AppArea from "../common/AppArea";
 
 const TalkPage = () => {
     const { chapterId } = useParams();
+    const navigate = useNavigate();
     const [ chapterData, setChapterData ] = useState();
     const [ typingIndicator, setTypingIndicator ] = useState(null);
     const [ chatLogs, setChatLogs ] = useState([]);
@@ -19,38 +20,11 @@ const TalkPage = () => {
         gameServer.get("/v1/chapter/file/" + chapterId, [], (chapter) => {
             setChapterData(chapter.data);
         });
-        setChatLogs([
-            {
-                type: "message",
-                message: "こんにちは",
-                sender: "rain1208",
-                direction: "incoming"
-            },
-            {
-                type: "message",
-                message: "こんにちは",
-                sender: "rain1208",
-                direction: "outgoing"
-            },
-            {
-                type: "image",
-                image: "https://media.discordapp.net/attachments/1095617215291719710/1143782884428234852/001.png",
-                imageAlt: "image sample",
-                sender: "rain1208",
-                direction: "incoming"
-            },
-            {
-                type: "message",
-                message: "いい感じじゃない？",
-                sender: "rain1208",
-                direction: "outgoing"
-            }
-        ])
-    }, [])
+    }, []);
 
     return (
         <>
-            <Header />
+            <Header prev={navigate} />
             <AppArea>
                 <MainContainer responsive>
                     <ChatContainer>
@@ -69,7 +43,6 @@ const TalkPage = () => {
 }
 
 const toChatMessage = (key, chatItem) => {
-    
     switch (chatItem.type) {
         case "message": 
             return (

@@ -10,8 +10,23 @@ import HomeButton from "../common/HomeButton";
 import AppArea from "../common/AppArea";
 
 const TalkPage = () => {
-    const { chapterId } = useParams();
     const navigate = useNavigate();
+
+    return (
+        <>
+            <Header prev={navigate} />
+            <AppArea>
+                <MainContainer responsive>
+                    <ChatArea />
+                </MainContainer>
+            </AppArea>
+            <HomeButton />
+        </>
+    )
+}
+
+const ChatArea = () => {
+    const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState();
     const [ typingIndicator, setTypingIndicator ] = useState(null);
     const [ chatLogs, setChatLogs ] = useState([]);
@@ -23,28 +38,20 @@ const TalkPage = () => {
     }, []);
 
     return (
-        <>
-            <Header prev={navigate} />
-            <AppArea>
-                <MainContainer responsive>
-                    <ChatContainer>
-                        <MessageList typingIndicator={typingIndicator}>
-                            {
-                                chatLogs.map((item, i) => toChatMessage(i, item))
-                            }
-                        </MessageList>
-                        <MessageInput attachButton={false} />
-                    </ChatContainer>
-                </MainContainer>
-            </AppArea>
-            <HomeButton />
-        </>
+        <ChatContainer>
+            <MessageList typingIndicator={typingIndicator}>
+                {
+                    chatLogs.map((item, i) => toChatMessage(i, item))
+                }
+            </MessageList>
+            <MessageInput attachButton={false} />
+        </ChatContainer>
     )
 }
 
 const toChatMessage = (key, chatItem) => {
     switch (chatItem.type) {
-        case "message": 
+        case "text": 
             return (
                 <Message key={key} model={{
                     message: chatItem.message,

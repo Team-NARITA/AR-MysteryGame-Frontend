@@ -1,12 +1,12 @@
 class Chapter {
     chapterId;
     chapterData;
-    progress = -1;
+    progress = 0;
     
     constructor(chapterId, chapterData) {
         this.chapterId = chapterId;
         this.chapterData = chapterData;
-        this.progress = -1;
+        this.progress = 0;
     }
 
     setProgress(progress) {
@@ -14,13 +14,14 @@ class Chapter {
     } 
 
     hasNext() {
-        return this.chapterData.length < this.progress;
+        return this.chapterData.length > this.progress;
     }
 
     next() {
-        if (this.hasNext()) throw new Error("Index Out Of Bounds")
+        if (!this.hasNext()) throw new Error("Index Out Of Bounds");
+        let data = this.chapterData[this.progress];
         this.progress++;
-        return this.chapterData[this.progress];
+        return data;
     }
 }
 

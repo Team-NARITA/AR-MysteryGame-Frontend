@@ -2,6 +2,9 @@ import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import gameServer from "../../network/gameServer";
 
+import { usePersistState } from "../common/usePersistState";
+import Chapter from "./ChapterData";
+
 import { MainContainer, ChatContainer, MessageList, Message, TypingIndicator, MessageInput, Avatar } from "@chatscope/chat-ui-kit-react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
@@ -27,15 +30,47 @@ const TalkPage = () => {
 
 const ChatArea = () => {
     const { chapterId } = useParams();
-    const [ chapterData, setChapterData ] = useState();
+    const [ chapterData, setChapterData ] = useState(null);
     const [ typingIndicator, setTypingIndicator ] = useState(null);
-    const [ chatLogs, setChatLogs ] = useState([]);
+    const [ chatLogs, setChatLogs ] = usePersistState({key: chapterId+".logs", initialValue: []});
+
+    const sendMessage = (message) => {
+        setTypingIndicator(<TypingIndicator content={message.sender + "が入力中"}/>)
+        setTimeout(() => {
+            setChatLogs([...chatLogs, message]);
+            setTypingIndicator(null);
+            localStorage.setItem(chapterId+".progress", chapterData.progress);
+        }, 1000);
+    }
 
     useEffect(() => {
-        gameServer.get("/v1/chapter/file/" + chapterId, [], (chapter) => {
-            setChapterData(chapter.data);
+        gameServer.get("/v1/chapter/file/" + chapterId, [], (chapterData) => {
+            let chapter = new Chapter(chapterId ,chapterData.data);
+            let progress = localStorage.getItem(chapterId+".progress") ?? 0;
+            chapter.setProgress(progress);
+            setChapterData(chapter);
         });
     }, []);
+
+    useEffect(() => {
+        if (chapterData == null) return;
+        let next = chapterData.next();
+        if (next.type == "text" || next.type == "image") {
+            setTimeout(() => {
+                sendMessage(toLogMessage(next));
+            }, 1000);
+        }
+    }, [chapterData]);
+
+    useEffect(() => {
+        if (chapterData == null) return;
+        let next = chapterData.next();
+        if (next.type == "text" || next.type == "image") {
+            setTimeout(() => {
+                sendMessage(toLogMessage(next));
+            }, 1000);
+        }
+    }, [chatLogs]);
 
     return (
         <ChatContainer>
@@ -47,6 +82,26 @@ const ChatArea = () => {
             <MessageInput attachButton={false} />
         </ChatContainer>
     )
+}
+
+const toLogMessage = (item) => {
+    switch (item.type) {
+        case "text":
+            return {
+                type: "text",
+                message: item.content,
+                sender: item.sender ?? "NoName",
+                direction: item.isUser ? "outgoing" : "incoming"
+            }
+        case "image":
+            return {
+                type: "image",
+                image: item.content,
+                imageAlt: item.imageAlt,
+                sender: item.sender ?? "NoName",
+                direction: item.isUser ? "outgoing" : "incoming"
+            }
+    }
 }
 
 const toChatMessage = (key, chatItem) => {

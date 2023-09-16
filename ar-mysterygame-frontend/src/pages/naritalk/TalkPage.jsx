@@ -34,7 +34,7 @@ const ChatArea = () => {
     const [ typingIndicator, setTypingIndicator ] = useState(null);
     const [ chatLogs, setChatLogs ] = usePersistState({key: chapterId+".logs", initialValue: []});
 
-    const sendMessage = (message) => {
+    const reciveMessage = (message) => {
         setTypingIndicator(<TypingIndicator content={message.sender + "が入力中"}/>)
         setTimeout(() => {
             new Promise((resolve) => {
@@ -48,6 +48,16 @@ const ChatArea = () => {
         }, 1000);
     }
 
+    const play = () => {
+        if (chapterData == null) return;
+        let next = chapterData.next();
+        if (next.type == "text" || next.type == "image") {
+            setTimeout(() => {
+                reciveMessage(toLogMessage(next));
+            }, 1000);
+        }
+    }
+
     useEffect(() => {
         gameServer.get("/v1/chapter/file/" + chapterId, [], (chapterData) => {
             let chapter = new Chapter(chapterId ,chapterData.data);
@@ -58,24 +68,8 @@ const ChatArea = () => {
     }, []);
 
     useEffect(() => {
-        if (chapterData == null) return;
-        let next = chapterData.next();
-        if (next.type == "text" || next.type == "image") {
-            setTimeout(() => {
-                sendMessage(toLogMessage(next));
-            }, 1000);
-        }
-    }, [chapterData]);
-
-    useEffect(() => {
-        if (chapterData == null) return;
-        let next = chapterData.next();
-        if (next.type == "text" || next.type == "image") {
-            setTimeout(() => {
-                sendMessage(toLogMessage(next));
-            }, 1000);
-        }
-    }, [chatLogs]);
+        play();
+    }, [chapterData, chatLogs]);
 
     let logs = chatLogs ?? [];
 

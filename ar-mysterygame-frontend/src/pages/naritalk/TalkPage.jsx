@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import gameServer from "../../network/gameServer";
 
-import { usePersistState } from "../common/usePersistState";
+import { useLocalStorage } from "../common/useLocalStorage";
 import Chapter from "./ChapterData";
 
 import { MainContainer, ChatContainer, MessageList, Message, TypingIndicator, MessageInput, Avatar } from "@chatscope/chat-ui-kit-react";
@@ -32,18 +32,18 @@ const ChatArea = () => {
     const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState(null);
     const [ typingIndicator, setTypingIndicator ] = useState(null);
-    const [ chatLogs, setChatLogs ] = usePersistState({key: chapterId+".logs", initialValue: []});
+    const [ chatLogs, setChatLogs ] = useLocalStorage(chapterId+".logs", []);
+    const [ progress, setProgress ] = useLocalStorage(chapterId+".progress", 0);
 
     const reciveMessage = (message) => {
         setTypingIndicator(<TypingIndicator content={message.sender + "が入力中"}/>)
         setTimeout(() => {
             new Promise((resolve) => {
-                let logs = chatLogs ?? [];
-                setChatLogs([...logs, message]);
+                setChatLogs((prev) => [...prev, message]);
                 setTypingIndicator(null);
                 resolve();
             }).then(() => {
-                localStorage.setItem(chapterId+".progress", chapterData.progress);
+                setProgress(chapterData.progress);
             })
         }, 1000);
     }
@@ -52,32 +52,28 @@ const ChatArea = () => {
         if (chapterData == null) return;
         let next = chapterData.next();
         if (next.type == "text" || next.type == "image") {
-            setTimeout(() => {
-                reciveMessage(toLogMessage(next));
-            }, 1000);
+            reciveMessage(toLogMessage(next));
         }
     }
 
     useEffect(() => {
         gameServer.get("/v1/chapter/file/" + chapterId, [], (chapterData) => {
             let chapter = new Chapter(chapterId ,chapterData.data);
-            let progress = localStorage.getItem(chapterId+".progress") ?? 0;
             chapter.setProgress(progress);
             setChapterData(chapter);
         });
     }, []);
 
     useEffect(() => {
+        if (!chapterData) return;
         play();
     }, [chapterData, chatLogs]);
-
-    let logs = chatLogs ?? [];
 
     return (
         <ChatContainer>
             <MessageList typingIndicator={typingIndicator}>
                 {
-                    logs.map((item, i) => toChatMessage(i, item))
+                    chatLogs.map((item, i) => toChatMessage(i, item))
                 }
             </MessageList>
             <MessageInput attachButton={false} />

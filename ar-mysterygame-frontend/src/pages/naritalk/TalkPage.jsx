@@ -37,9 +37,14 @@ const ChatArea = () => {
     const sendMessage = (message) => {
         setTypingIndicator(<TypingIndicator content={message.sender + "が入力中"}/>)
         setTimeout(() => {
-            setChatLogs([...chatLogs, message]);
-            setTypingIndicator(null);
-            localStorage.setItem(chapterId+".progress", chapterData.progress);
+            new Promise((resolve) => {
+                let logs = chatLogs ?? [];
+                setChatLogs([...logs, message]);
+                setTypingIndicator(null);
+                resolve();
+            }).then(() => {
+                localStorage.setItem(chapterId+".progress", chapterData.progress);
+            })
         }, 1000);
     }
 
@@ -72,11 +77,13 @@ const ChatArea = () => {
         }
     }, [chatLogs]);
 
+    let logs = chatLogs ?? [];
+
     return (
         <ChatContainer>
             <MessageList typingIndicator={typingIndicator}>
                 {
-                    chatLogs.map((item, i) => toChatMessage(i, item))
+                    logs.map((item, i) => toChatMessage(i, item))
                 }
             </MessageList>
             <MessageInput attachButton={false} />

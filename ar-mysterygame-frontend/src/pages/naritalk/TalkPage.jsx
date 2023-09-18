@@ -67,7 +67,7 @@ const ChatArea = () => {
     useEffect(() => {
         if (!chapterData) return;
         play();
-    }, [chapterData, chatLogs]);
+    }, [chapterData, progress]);
 
     return (
         <ChatContainer>
@@ -122,7 +122,7 @@ const toChatMessage = (key, chatItem) => {
                     position: "first"
                 }}>
                     <Message.Header sender={chatItem.sender} />
-                    <Message.ImageContent src={chatItem.image} alt={chatItem.imageAlt} width="70vw"/>
+                    <Message.ImageContent src={chatItem.image} alt={chatItem.imageAlt} width="100%"/>
                 </Message>
             )
     }

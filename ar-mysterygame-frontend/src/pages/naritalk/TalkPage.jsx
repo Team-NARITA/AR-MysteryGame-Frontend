@@ -101,6 +101,22 @@ const ChatArea = () => {
         }, 1000);
     }
 
+    const showSelectButton = (item) => {
+        let options = [];
+        item.content.forEach((it) => {
+            options = [...options, {
+                value: it,
+                text: it
+            }];
+        });
+        chatCtl.setActionRequest({
+            type: 'select',
+            options: options
+        }).then(() => {
+            setProgress(chapterData.progress);
+        });
+    }
+
     const play = () => {
         if (!chapterData) return;
         if (!chapterData.hasNext()) return;
@@ -111,6 +127,9 @@ const ChatArea = () => {
                 break;
             case "image":
                 reciveImage(next);
+                break;
+            case "button":
+                showSelectButton(next);
                 break;
         }
     }

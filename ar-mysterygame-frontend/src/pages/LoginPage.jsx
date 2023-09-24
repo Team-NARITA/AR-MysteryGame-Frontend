@@ -1,7 +1,6 @@
-import {getRedirectResult, GoogleAuthProvider, signInWithRedirect} from "firebase/auth";
+import {getRedirectResult, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import { auth } from "../network/auth/firebase";
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router";
 
 import "./login/LoginPage.css"
 import gameLogo from '../assets/main-visual.png';
@@ -34,7 +33,7 @@ const LoginView = () => {
     const provider = new GoogleAuthProvider();
     const clickLogin = () => {
         sessionStorage.setItem('loading','true');
-        signInWithRedirect(auth, provider);
+        signInWithPopup(auth, provider);
     }
     return (
         <div className="home-content">

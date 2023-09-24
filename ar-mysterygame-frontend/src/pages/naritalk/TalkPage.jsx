@@ -63,7 +63,6 @@ const ChatArea = () => {
             });
             setChatLogs(serializedLogs);
         });
-        chatCtl.setActionRequest({type:"text", always: true});
     }, []);
 
     useEffect(() => {
@@ -117,9 +116,24 @@ const ChatArea = () => {
         });
     }
 
+    const showInput = (item) => {
+        chatCtl.setActionRequest({type: "text", always: true},
+        (answer) => {
+            gameServer.post("/v1/mystery/submit/" + item.mysteryId, {"answer": answer.value}, 
+            (response) => {
+                if (response.data.isCorrect) {
+                    setProgress(chapterData.progress);
+                }
+            });
+        });
+    }
+
     const play = () => {
         if (!chapterData) return;
-        if (!chapterData.hasNext()) return;
+        if (!chapterData.hasNext()) {
+            gameServer.post("/v1/chapter/clear/" + chapterId, []);
+            return;
+        }
         let next = chapterData.next();
         switch (next.type) {
             case "text":
@@ -130,6 +144,9 @@ const ChatArea = () => {
                 break;
             case "button":
                 showSelectButton(next);
+                break;
+            case "input":
+                showInput(next);
                 break;
         }
     }

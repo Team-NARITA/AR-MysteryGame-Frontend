@@ -5,9 +5,6 @@ import gameServer from "../../network/gameServer";
 import { useLocalStorage } from "../common/useLocalStorage";
 import Chapter from "./ChapterData";
 
-import { MainContainer, ChatContainer, MessageList, Message, TypingIndicator, MessageInput, Avatar, Button } from "@chatscope/chat-ui-kit-react";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-
 import { ChatController, MuiChat } from "chat-ui-react";
 import { serialize, deserialize } from "react-serialize";
 
@@ -35,7 +32,6 @@ const ChatArea = () => {
     const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState(null);
     const [chatCtl] = useState(new ChatController());
-    //const [ typingIndicator, setTypingIndicator ] = useState(null);
     const [ chatLogs, setChatLogs ] = useLocalStorage(chapterId+".logs", []);
     const [ progress, setProgress ] = useLocalStorage(chapterId+".progress", 0);
 

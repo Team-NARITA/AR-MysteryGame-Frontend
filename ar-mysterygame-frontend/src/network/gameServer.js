@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 
 class GameServer {
-    baseUrl = "http://localhost:8080";
+    baseUrl = "https://api.rain1208.com";
 
     async get(endpoint, param, callback) {
         console.log("GetRequest: " + endpoint);
@@ -14,7 +14,7 @@ class GameServer {
             params: param
         }).then((response) => {
             console.log(response);
-            callback(response);
+            if (callback) callback(response);
         }).catch(error => {
             console.log("get Error");
             console.log(error);
@@ -31,7 +31,7 @@ class GameServer {
         axios.post(this.baseUrl + endpoint, param, { headers: header }
         ).then((response) => {
             console.log(response);
-            callback(response);
+            if (callback) callback(response);
         }).catch(error => {
             console.log("Post Error");
             console.log(error);

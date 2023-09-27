@@ -53,8 +53,11 @@ const ChatArea = () => {
             let logs = chatCtl.getMessages();
             let serializedLogs = [];
             logs.map((it) => {
-                let item = JSON.parse(JSON.stringify(it));
-                if (it.type == "jsx") item.content = serialize(it.content);
+                let item = it;
+                if (it.type == "jsx") {
+                    item = JSON.parse(JSON.stringify(it));
+                    item.content = serialize(it.content);
+                }
                 serializedLogs.push(item);
             });
             setChatLogs(serializedLogs);

@@ -37,7 +37,7 @@ const LoginView = () => {
     }
     return (
         <div className="home-content">
-            <img className="fullsize-img little-opacity" src={gameLogo} alt="ロゴ"></img>
+            <img className="fullsize-img" src={gameLogo} alt="ロゴ"></img>
             <button className="start-button" onClick={() => clickLogin()}>ログインして開始</button>
         </div>
     );

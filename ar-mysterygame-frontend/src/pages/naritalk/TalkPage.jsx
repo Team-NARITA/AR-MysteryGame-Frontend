@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import gameServer from "../../network/gameServer";
 
@@ -15,11 +15,9 @@ import AppArea from "../common/AppArea";
 import "./TalkPage.css";
 
 const TalkPage = () => {
-    const navigate = useNavigate();
-
     return (
         <>
-            <Header prev={navigate} />
+            <Header prev={true} />
             <AppArea>
                 <ChatArea />
             </AppArea>
@@ -122,6 +120,7 @@ const ChatArea = () => {
             (response) => {
                 if (response.data.isCorrect) {
                     setProgress(chapterData.progress);
+                    chatCtl.cancelActionRequest();
                 }
             });
         });
@@ -130,7 +129,11 @@ const ChatArea = () => {
     const play = () => {
         if (!chapterData) return;
         if (!chapterData.hasNext()) {
-            gameServer.post("/v1/chapter/clear/" + chapterId, []);
+            let isClear = localStorage.getItem(chapterId+".clear");
+            if (!isClear) {
+                gameServer.post("/v1/chapter/clear/" + chapterId, []);
+                localStorage.setItem(chapterId+".clear", true);
+            }
             return;
         }
         let next = chapterData.next();

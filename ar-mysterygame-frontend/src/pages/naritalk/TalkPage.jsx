@@ -29,7 +29,7 @@ const TalkPage = () => {
 const ChatArea = () => {
     const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState(null);
-    const [chatCtl] = useState(new ChatController());
+    const [ chatCtl ] = useState(new ChatController({delay:1000}));
     const [ chatLogs, setChatLogs ] = useLocalStorage(chapterId+".logs", []);
     const [ progress, setProgress ] = useLocalStorage(chapterId+".progress", 0);
 
@@ -68,33 +68,29 @@ const ChatArea = () => {
     }, [chapterData, progress]);
 
     const reciveMessage = (item) => {
-        setTimeout(() => {
-            chatCtl.addMessage({
-                type: "text",
-                content: item.content,
-                self: false,
-                username: item.sender
-            }).then(() => {
-                setProgress(chapterData.progress);
-            });
-        }, 1000);
+        chatCtl.addMessage({
+            type: "text",
+            content: item.content,
+            self: false,
+            username: item.sender
+        }).then(() => {
+            setProgress(chapterData.progress);
+        });
     }
 
     const reciveImage = (item) => {
-        setTimeout(() => {
-            chatCtl.addMessage({
-                type: "jsx",
-                content: (
-                    <div>
-                        <img src={item.content} width="100%"/>
-                    </div>
-                ),
-                self: false,
-                username: item.sender
-            }).then(() => {
-                setProgress(chapterData.progress);
-            });
-        }, 1000);
+        chatCtl.addMessage({
+            type: "jsx",
+            content: (
+                <div>
+                    <img src={item.content} width="100%"/>
+                </div>
+            ),
+            self: false,
+            username: item.sender
+        }).then(() => {
+            setProgress(chapterData.progress);
+        });
     }
 
     const showSelectButton = (item) => {
@@ -115,15 +111,16 @@ const ChatArea = () => {
 
     const showInput = (item) => {
         chatCtl.setActionRequest({type: "text", always: true},
-        (answer) => {
-            gameServer.post("/v1/mystery/submit/" + item.mysteryId, {"answer": answer.value}, 
-            (response) => {
-                if (response.data.isCorrect) {
-                    setProgress(chapterData.progress);
-                    chatCtl.cancelActionRequest();
-                }
-            });
-        });
+            (answer) => {
+                gameServer.post("/v1/mystery/submit/" + item.mysteryId, {"answer": answer.value}, 
+                    (response) => {
+                    if (response.data.isCorrect) {
+                        setProgress(chapterData.progress);
+                        chatCtl.cancelActionRequest();
+                    }
+                });
+            }
+        );
     }
 
     const play = () => {

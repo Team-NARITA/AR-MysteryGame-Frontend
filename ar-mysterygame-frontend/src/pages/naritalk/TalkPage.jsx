@@ -5,7 +5,8 @@ import gameServer from "../../network/gameServer";
 import { useLocalStorage } from "../common/useLocalStorage";
 import Chapter from "./ChapterData";
 
-import { ChatController, MuiChat } from "chat-ui-react";
+import { MuiChat } from "./MuiChat";
+import { ChatController } from "chat-ui-react";
 import { serialize, deserialize } from "react-serialize";
 
 import Header from "../common/Header";
@@ -121,6 +122,7 @@ const ChatArea = () => {
                 });
             }
         );
+        chatCtl.callOnMessagesChanged();
     }
 
     const play = () => {

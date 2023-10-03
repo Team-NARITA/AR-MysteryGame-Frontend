@@ -6,7 +6,9 @@ import CircleIcon from '@mui/icons-material/Circle';
 const HomeButton = () => {
     return (
         <div className="footer">
-            <div className="button-left"></div>
+            <div className="button-left-wrap">
+                <div className="button-left"></div>
+            </div>
             <div className="wrap">
                 <div className="button-area">
                     <Link to={"/"}>
@@ -14,7 +16,9 @@ const HomeButton = () => {
                     </Link>
                 </div>
             </div>
-            <div className="button-right"></div>
+            <div className="button-right-wrap">
+                <div className="button-right"></div>
+            </div>
         </div>
     );
 }

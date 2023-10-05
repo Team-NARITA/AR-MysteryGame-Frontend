@@ -116,8 +116,8 @@ const ChatArea = () => {
                 gameServer.post("/v1/mystery/submit/" + item.mysteryId, {"answer": answer.value}, 
                     (response) => {
                     if (response.data.isCorrect) {
-                        setProgress(chapterData.progress);
                         chatCtl.cancelActionRequest();
+                        setProgress(chapterData.progress);
                     }
                 });
             }

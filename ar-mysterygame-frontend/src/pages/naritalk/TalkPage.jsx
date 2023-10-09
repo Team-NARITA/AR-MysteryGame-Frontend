@@ -14,6 +14,15 @@ import HomeButton from "../common/HomeButton";
 import AppArea from "../common/AppArea";
 
 import "./TalkPage.css";
+import { ThemeProvider, createTheme } from "@mui/material";
+
+const theme = createTheme({
+    typography: {
+        fontFamily: [
+            "GenEiLateMinP_v2"
+        ]
+    }
+})
 
 const TalkPage = () => {
     return (
@@ -154,7 +163,9 @@ const ChatArea = () => {
 
     return (
         <div style={{left:"5px", right:"5px", top:"5px", bottom:"5px", position:"absolute"}}>
-            <MuiChat chatController={chatCtl} />
+            <ThemeProvider theme={theme}>
+                <MuiChat chatController={chatCtl} />
+            </ThemeProvider>
         </div>
     );
 }

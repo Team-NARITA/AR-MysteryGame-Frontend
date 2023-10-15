@@ -4,7 +4,6 @@ import gameServer from "../network/gameServer";
 
 import "./home/HomePage.css";
 
-import { ReactSortable } from "react-sortablejs";
 import RegisterModal from "./home/RegisterModal";
 import HomeButton from "./common/HomeButton";
 
@@ -49,7 +48,7 @@ const HomeMenuView = (props) => {
     }
 
     return (
-        <ReactSortable list={applist} setList={setApplist} delay={400} id="homemenu">
+        <div id="homemenu">
             {
                 applist.map((item) => (
                     <div key={item.id} className="app-icon" onClick={() => navigate(item.path)}>
@@ -57,7 +56,7 @@ const HomeMenuView = (props) => {
                     </div>
                 ))
             }
-        </ReactSortable>
+        </div>
     )
 }
 

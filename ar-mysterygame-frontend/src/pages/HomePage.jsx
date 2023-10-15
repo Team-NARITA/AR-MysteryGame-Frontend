@@ -39,7 +39,7 @@ const HomeMenuView = (props) => {
         {id: "2", name: "naritter"},
         {id: "3", name: "クーポン"},
         {id: "4", name: "メモ"},
-        {id: "5", name: "ゲーム情報"},
+        {id: "5", name: "ゲーム情報", path: "/gameinfo"},
         {id: "6", name: "ARアプリ"},
     ]);
 

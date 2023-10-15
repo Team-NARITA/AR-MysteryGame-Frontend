@@ -34,14 +34,14 @@ const HomeMenuView = (props) => {
     const gameUser = props.userInfo;
     const navigate = useNavigate();
 
-    const [ applist, setApplist ] = useState([
+    const applist = [
         {id: "1", name: "naritalk", path: "/naritalk"},
         {id: "2", name: "naritter"},
         {id: "3", name: "クーポン"},
         {id: "4", name: "メモ"},
         {id: "5", name: "ゲーム情報", path: "/gameinfo"},
         {id: "6", name: "ARアプリ"},
-    ]);
+    ];
 
     if (gameUser.role === "UNREGISTER_USER") {
         return (<RegisterModal setGameUser={(props.setGameUser)} />)

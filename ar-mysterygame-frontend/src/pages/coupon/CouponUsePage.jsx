@@ -53,7 +53,7 @@ const CouponUsePage = () => {
 const CouponView = (props) => {
     const userCouponData = props.userCouponData;
     const couponData = userCouponData.couponData;
-    const style = userCouponData.isAvailable ? notAvailableColorStyle : notAvailableColorStyle;
+    const style = userCouponData.isAvailable ? availableColorStyle : notAvailableColorStyle;
 
     return (
         <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto", maxWidth: "50vh"}}>

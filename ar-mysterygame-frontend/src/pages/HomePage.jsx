@@ -37,7 +37,7 @@ const HomeMenuView = (props) => {
     const applist = [
         {id: "1", name: "naritalk", path: "/naritalk"},
         {id: "2", name: "naritter"},
-        {id: "3", name: "クーポン"},
+        {id: "3", name: "クーポン", path: "/coupon"},
         {id: "4", name: "メモ"},
         {id: "5", name: "ゲーム情報", path: "/gameinfo"},
         {id: "6", name: "ARアプリ"},

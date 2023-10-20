@@ -47,3 +47,58 @@
     top: 20px;
     font-size: 40px;
 }
+
+.coupon-card-info {
+    position: relative;
+    height: 60%;
+}
+
+.coupon-card-info p {
+    margin: 0;
+}
+
+.coupon-card-storeName {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.coupon-card-discountItem {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.coupon-card-storePlace {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 20px;
+}
+
+.coupon-card-originPrice {
+    position: absolute;
+    right: 20px;
+    bottom: 70px;
+    font-size: 40px;
+
+    text-decoration: line-through yellow;
+}
+
+.coupon-card-discountedPrice {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.coupon-use-button {
+    height: 40px;
+    width: 150px;
+    border-radius: 30px;
+}

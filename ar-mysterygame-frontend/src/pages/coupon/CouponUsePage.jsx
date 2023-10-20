@@ -5,8 +5,6 @@ import Header from "../common/Header";
 import AppArea from "../common/AppArea";
 import HomeButton from "../common/HomeButton";
 
-import takoyaki from "../../assets/takoyaki.webp";
-
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 const colorStyle = css`
@@ -55,19 +53,22 @@ const CouponUsePage = () => {
 const CouponView = (props) => {
     const userCouponData = props.userCouponData;
     const couponData = userCouponData.couponData;
-    const style = userCouponData.isAvailable ? availableColorStyle : notAvailableColorStyle;
+    const style = userCouponData.isAvailable ? notAvailableColorStyle : notAvailableColorStyle;
 
     return (
-        <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto"}}>
+        <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto", maxWidth: "50vh"}}>
             <div className="coupon-card" style={{height:"68vh", borderRadius: "10px"}} css={style.card}>
-                <img src={takoyaki} width="100%" style={{borderRadius: "10px"}} />
-                <div css={style.p}>
+                <img src={couponData.thumbnail} width="100%"  style={{borderRadius: "10px", aspectRatio: "16/9"}} />
+                <div className="coupon-card-info" css={style.p}>
                     <p className="coupon-card-storeName">{couponData.storeName}</p>
                     <p className="coupon-card-discountItem">{couponData.discountItem}</p>
+                    <p className="coupon-card-storePlace">{couponData.storePlace}</p>
+                    <p className="coupon-card-originPrice">{couponData.originalPrice}円</p>
+                    <p className="coupon-card-discountedPrice">{couponData.discountedPrice}円</p>
                 </div>
             </div>
-            <div>
-                
+            <div style={{textAlign: "center", marginTop: "10px"}}>
+                { userCouponData.isAvailable ? <button className="coupon-use-button" css={style.card}>使用する</button> : <button className="coupon-use-button" css={style.card} disabled="true">使用不可</button>}
             </div>
         </div>
     )

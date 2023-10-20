@@ -34,8 +34,8 @@ const CouponUsePage = () => {
     const [ userCouponData, setUserCouponData ] = useState();
 
     useEffect(() => {
-        gameServer.get("/v1/coupon/", {}, (couponData) => {
-            setUserCouponData(couponData.data[0]);
+        gameServer.get("/v1/coupon/" + couponId, {}, (couponData) => {
+            setUserCouponData(couponData.data);
         });
     }, []);
 

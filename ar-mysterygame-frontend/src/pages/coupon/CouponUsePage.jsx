@@ -55,9 +55,12 @@ const CouponView = (props) => {
     const couponData = userCouponData.couponData;
     const style = userCouponData.isAvailable ? availableColorStyle : notAvailableColorStyle;
 
+    const useCoupon = () => {
+    }
+
     return (
         <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto", maxWidth: "50vh"}}>
-            <div className="coupon-card" style={{height:"68vh", borderRadius: "10px"}} css={style.card}>
+            <div className="coupon-card" style={{height:"65vh", borderRadius: "10px"}} css={style.card}>
                 <img src={couponData.thumbnail} width="100%"  style={{borderRadius: "10px", aspectRatio: "16/9"}} />
                 <div className="coupon-card-info" css={style.p}>
                     <p className="coupon-card-storeName">{couponData.storeName}</p>
@@ -68,7 +71,7 @@ const CouponView = (props) => {
                 </div>
             </div>
             <div style={{textAlign: "center", marginTop: "10px"}}>
-                { userCouponData.isAvailable ? <button className="coupon-use-button" css={style.card}>使用する</button> : <button className="coupon-use-button" css={style.card} disabled="true">使用不可</button>}
+                { userCouponData.isAvailable ? <button className="coupon-use-button" css={style.card} onClick={() => useCoupon()}>使用する</button> : <button className="coupon-use-button" css={style.card} disabled={true}>使用不可</button>}
             </div>
         </div>
     )

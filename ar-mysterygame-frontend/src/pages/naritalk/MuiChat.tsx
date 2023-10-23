@@ -18,7 +18,7 @@ import { MuiFileInput } from 'chat-ui-react/dist/cjs/mui/MuiFileInput';
 import { MuiMessage } from 'chat-ui-react/dist/cjs/mui/MuiMessage';
 import { MuiMultiSelectInput } from 'chat-ui-react/dist/cjs/mui/MuiMultiSelectInput';
 import { MuiSelectInput } from 'chat-ui-react/dist/cjs/mui/MuiSelectInput';
-import { MuiTextInput } from 'chat-ui-react/dist/cjs/mui/MuiTextInput';
+import MuiTextInput from './MuiTextInput';
 
 export function MuiChat({
   chatController,

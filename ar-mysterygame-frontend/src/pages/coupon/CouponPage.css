@@ -1,0 +1,104 @@
+.coupon-list-wrapper {
+    margin: 0 10px;
+}
+
+.coupon-item-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 80px;
+}
+
+.coupon-item {
+    position: relative;
+    height: 100%;
+}
+
+.triangle {
+    height: 12px;
+    width: 30px;
+    clip-path: polygon(0 0, 95% 0, 100% 100%);
+}
+
+.coupon-name {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    margin: 0 auto;
+
+    font-size: 28px;
+}
+
+.coupon-info {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    margin: 0 auto;
+
+    font-size: 18px;
+}
+
+.coupon-item p {
+    font-weight: bold;
+}
+
+.coupon-item .arrow-icon {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    font-size: 40px;
+}
+
+.coupon-card-info {
+    position: relative;
+    height: 60%;
+}
+
+.coupon-card-info p {
+    margin: 0;
+}
+
+.coupon-card-storeName {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.coupon-card-discountItem {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.coupon-card-storePlace {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 20px;
+}
+
+.coupon-card-originPrice {
+    position: absolute;
+    right: 20px;
+    bottom: 70px;
+    font-size: 40px;
+
+    text-decoration: line-through yellow;
+}
+
+.coupon-card-discountedPrice {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.coupon-use-button {
+    height: 40px;
+    width: 150px;
+    border-radius: 30px;
+}

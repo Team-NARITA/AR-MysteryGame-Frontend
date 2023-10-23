@@ -7,6 +7,11 @@ import "./home/HomePage.css";
 import RegisterModal from "./home/RegisterModal";
 import HomeButton from "./common/HomeButton";
 
+import naritalkIcon from "../assets/icons/naritalk-icon.webp";
+import couponIcon from "../assets/icons/coupon-icon.webp";
+import gameinfoIcon from "../assets/icons/gameinfo-icon.webp";
+import AppArea from "./common/AppArea";
+
 const HomePage = () => {
     const [gameUser, setGameUser] = useState(null);
 
@@ -35,12 +40,9 @@ const HomeMenuView = (props) => {
     const navigate = useNavigate();
 
     const applist = [
-        {id: "1", name: "naritalk", path: "/naritalk"},
-        {id: "2", name: "naritter"},
-        {id: "3", name: "クーポン", path: "/coupon"},
-        {id: "4", name: "メモ"},
-        {id: "5", name: "ゲーム情報", path: "/gameinfo"},
-        {id: "6", name: "ARアプリ"},
+        {id: "1", name: "naritalk", path: "/naritalk", img: naritalkIcon},
+        {id: "3", name: "クーポン", path: "/coupon", img: couponIcon},
+        {id: "5", name: "ゲーム情報", path: "/gameinfo", img: gameinfoIcon}
     ];
 
     if (gameUser.role === "UNREGISTER_USER") {
@@ -48,15 +50,23 @@ const HomeMenuView = (props) => {
     }
 
     return (
-        <div id="homemenu">
+        <>
+        <AppArea>
+            <div id="homemenu">
             {
                 applist.map((item) => (
-                    <div key={item.id} className="app-icon" onClick={() => navigate(item.path)}>
+                    <div className="app-icon">
+                        <div key={item.id} onClick={() => navigate(item.path)}>
+                            <img height="100%" width="100%" src={item.img} alt={item.name} ></img>
+                        </div>
                         {item.name}
                     </div>
                 ))
             }
         </div>
+        </AppArea>
+        <HomeButton />
+        </>
     )
 }
 

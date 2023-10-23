@@ -5,6 +5,8 @@ import Header from "../common/Header";
 import AppArea from "../common/AppArea";
 import HomeButton from "../common/HomeButton";
 
+import "./CouponUsePage.css";
+
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { CouponUseDialog } from "./CouponUseDialog";
@@ -77,15 +79,19 @@ const CouponView = (props) => {
     }
 
     return (
-        <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto", maxWidth: "50vh"}}>
-            <div className="coupon-card" style={{height:"55vh", borderRadius: "10px"}} css={style.card}>
-                <img src={couponData.thumbnail} width="100%"  style={{borderRadius: "10px", aspectRatio: "16/9"}} />
-                <div className="coupon-card-info" css={style.p}>
+        <div className="coupon-card-wrapper">
+            <div className="coupon-card" css={style.card}>
+                <figure className="coupon-card-thumbnail">
+                    <img src={couponData.thumbnail} alt={couponData.discountItem} className="coupon-card-image"/>
+                </figure>
+                <div className="coupon-card-body">
                     <p className="coupon-card-storeName">{couponData.storeName}</p>
                     <p className="coupon-card-discountItem">{couponData.discountItem}</p>
                     <p className="coupon-card-storePlace">{couponData.storePlace}</p>
-                    <p className="coupon-card-originPrice">{couponData.originalPrice}円</p>
-                    <p className="coupon-card-discountedPrice">{couponData.discountedPrice}円</p>
+                    <div className="coupon-card-prices">
+                        <p className="coupon-card-originPrice">{couponData.originalPrice}円</p>
+                        <p className="coupon-card-discountedPrice">{couponData.discountedPrice}円</p>
+                    </div>
                 </div>
             </div>
             <div style={{textAlign: "center", marginTop: "10px"}}>
@@ -93,7 +99,7 @@ const CouponView = (props) => {
             </div>
             { modalConfig && <CouponUseDialog {...modalConfig} /> }
         </div>
-    )
+    );
 }
 
 export default CouponUsePage;

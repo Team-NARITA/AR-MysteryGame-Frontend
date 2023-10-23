@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import gameServer from "../../network/gameServer";
 import Header from "../common/Header";
 import AppArea from "../common/AppArea";
@@ -7,6 +7,7 @@ import HomeButton from "../common/HomeButton";
 
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { CouponUseDialog } from "./CouponUseDialog";
 const colorStyle = css`
     background-color: #d54f7a !important
 `;
@@ -43,7 +44,7 @@ const CouponUsePage = () => {
         <>
             <Header prev={true} style={colorStyle}/>
             <AppArea>
-                { userCouponData ? <CouponView userCouponData={userCouponData}/> : <></>}
+                { userCouponData && <CouponView userCouponData={userCouponData} couponId={couponId} /> }
             </AppArea>
             <HomeButton style={colorStyle}/>
         </>
@@ -51,11 +52,28 @@ const CouponUsePage = () => {
 }
 
 const CouponView = (props) => {
+    const navigate = useNavigate();
+    const [modalConfig, setModalConfig] = useState();
+    const couponId = props.couponId;
     const userCouponData = props.userCouponData;
     const couponData = userCouponData.couponData;
     const style = userCouponData.isAvailable ? availableColorStyle : notAvailableColorStyle;
 
-    const useCoupon = () => {
+    const useCoupon = async () => {
+        const ret = await new Promise((resolve) => {
+            setModalConfig({
+                onClose: resolve,
+                title: "クーポンを使用します",
+                message: "使用する前に店員にクーポンを提示してください"
+            })
+        })
+        setModalConfig(undefined);
+        console.log(ret);
+        if (ret === "ok") {
+            gameServer.get("/v1/coupon/use/"+couponId, {}, (usedCoupon) => {
+                navigate(-1);
+            })
+        }
     }
 
     return (
@@ -73,6 +91,7 @@ const CouponView = (props) => {
             <div style={{textAlign: "center", marginTop: "10px"}}>
                 { userCouponData.isAvailable ? <button className="coupon-use-button" css={style.card} onClick={() => useCoupon()}>使用する</button> : <button className="coupon-use-button" css={style.card} disabled={true}>使用不可</button>}
             </div>
+            { modalConfig && <CouponUseDialog {...modalConfig} /> }
         </div>
     )
 }

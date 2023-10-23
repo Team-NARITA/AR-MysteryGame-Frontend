@@ -78,7 +78,7 @@ const CouponView = (props) => {
 
     return (
         <div className="coupon-wrapper" style={{width:"95vw", margin:"15px auto", maxWidth: "50vh"}}>
-            <div className="coupon-card" style={{height:"65vh", borderRadius: "10px"}} css={style.card}>
+            <div className="coupon-card" style={{height:"55vh", borderRadius: "10px"}} css={style.card}>
                 <img src={couponData.thumbnail} width="100%"  style={{borderRadius: "10px", aspectRatio: "16/9"}} />
                 <div className="coupon-card-info" css={style.p}>
                     <p className="coupon-card-storeName">{couponData.storeName}</p>

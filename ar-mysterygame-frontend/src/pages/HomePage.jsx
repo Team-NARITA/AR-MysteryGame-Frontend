@@ -55,8 +55,8 @@ const HomeMenuView = (props) => {
             <div id="homemenu">
             {
                 applist.map((item) => (
-                    <div className="app-icon">
-                        <div key={item.id} onClick={() => navigate(item.path)}>
+                    <div className="app-icon" key={item.id}>
+                        <div onClick={() => navigate(item.path)}>
                             <img height="100%" width="100%" src={item.img} alt={item.name} ></img>
                         </div>
                         {item.name}

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import gameServer from "../../network/gameServer";
 
@@ -37,6 +37,7 @@ const TalkPage = () => {
 }
 
 const ChatArea = () => {
+    const navigate = useNavigate();
     const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState(null);
     const [ chatCtl ] = useState(new ChatController({delay:1000}));
@@ -157,6 +158,7 @@ const ChatArea = () => {
             if (!isClear) {
                 gameServer.post("/v1/chapter/clear/" + chapterId, []);
                 localStorage.setItem(chapterId+".clear", true);
+                setTimeout(() => navigate(-1), 5000);
             }
             return;
         }

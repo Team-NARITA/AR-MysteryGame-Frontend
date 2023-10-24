@@ -122,11 +122,27 @@ const ChatArea = () => {
     const showInput = (item) => {
         chatCtl.setActionRequest({type: "text", always: true},
             (answer) => {
+                if (answer.value === "ヒント") {
+                    chatCtl.addMessage({
+                        type: "text",
+                        content: item.hint,
+                        self: false,
+                        username: "ヒント"
+                    });
+                    return;
+                }
                 gameServer.post("/v1/mystery/submit/" + item.mysteryId, {"answer": answer.value}, 
                     (response) => {
                     if (response.data.isCorrect) {
                         chatCtl.cancelActionRequest();
                         setProgress(chapterData.progress);
+                    } else {
+                        chatCtl.addMessage({
+                            type: "text",
+                            content: "「ヒント」と入力するとヒントを見る事ができます",
+                            self: false,
+                            username: ""
+                        })
                     }
                 });
             }

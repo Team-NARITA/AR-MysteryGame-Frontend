@@ -83,7 +83,8 @@ const ChatArea = () => {
             type: "text",
             content: item.content,
             self: false,
-            username: item.sender
+            username: item.sender,
+            avatar: item.avatar
         }).then(() => {
             setProgress(chapterData.progress);
         });

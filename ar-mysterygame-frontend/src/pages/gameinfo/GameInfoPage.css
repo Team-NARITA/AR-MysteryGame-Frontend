@@ -1,0 +1,42 @@
+.gameinfo .wrapper {
+    width: 95vw;
+    margin: 0 auto;
+}
+
+.gameinfo .username {
+    margin-top: 2vh;
+    width: 100%;
+    background-color: rgb(218, 214, 214);
+}
+
+.gameinfo .username .caption {
+    padding: 10px 5px 5px 10px;
+    font-size: 25px;
+}
+
+.gameinfo .username .name {
+    padding: 0 10px 10px 5px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.gameinfo .progress {
+    margin-top: 10px;
+}
+
+.gameinfo .progress .caption {
+    border-bottom: 2px solid #0c0c0c;
+    font-size: 20px;
+}
+
+.gameinfo .progress p {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.gameinfo .progress .date {
+    margin-top: unset;
+    font-size: 23px;
+    text-align: right;
+}

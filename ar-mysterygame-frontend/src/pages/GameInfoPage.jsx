@@ -4,6 +4,8 @@ import Header from "./common/Header";
 import HomeButton from "./common/HomeButton";
 import gameServer from "../network/gameServer";
 
+import "./gameinfo/GameInfoPage.css";
+
 const GameInfoPage = () => {
     const [gameUser, setGameUser] = useState(null);
     
@@ -18,7 +20,7 @@ const GameInfoPage = () => {
         <>
             <Header />
             <AppArea>
-                { gameUser ? <GameInfoView gameUser={gameUser} /> : <></>}
+                { gameUser && <GameInfoView gameUser={gameUser} /> }
             </AppArea>
             <HomeButton />
         </>
@@ -33,6 +35,24 @@ const GameInfoView = (props) => {
     const createAt = props.gameUser.createAt;
 
     const dateStr = new Date(createAt);
+
+    return (
+        <div className="gameinfo">
+            <div className="wrapper">
+                <div className="username">
+                    <p className="caption">ユーザーネーム: </p>
+                    <p className="name">{userName}</p>
+                </div>
+                <div className="progress">
+                    <p className="caption">現在の進捗状況</p>
+                    <p className="now-chapter">現在の進捗: {currentChapter.chapterName}</p>
+                    <p className="solvedmystery">解いた謎の合計数: {solvedMysterys.length}</p>
+                    <p>アカウント作成日時:</p>
+                    <p className="date">{dateStr.toLocaleString()}</p>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <>

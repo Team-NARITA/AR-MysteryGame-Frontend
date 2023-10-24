@@ -29,6 +29,7 @@ img {
 .coupon-card-image {
     border-radius: 10px 10px 0 0;
     width: 100%;
+    aspect-ratio: 16/9;
 }
 
 .coupon-card-body {

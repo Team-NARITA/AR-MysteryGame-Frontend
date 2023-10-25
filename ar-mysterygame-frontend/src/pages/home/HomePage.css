@@ -1,10 +1,16 @@
-.modal {
+.register-modal {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 100;
+}
+
+.register-modal .modal-wrapper {
+    width: 60vh;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .input-box {

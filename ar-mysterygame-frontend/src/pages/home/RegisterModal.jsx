@@ -15,9 +15,11 @@ const RegisterModal = ( props ) => {
     }
 
     return (
-        <div className="modal">
-            <img className="fullsize-img little-opacity" src={mainvisual} alt="メイン画像"></img>
-            <InputArea registerAccount={registerAccount}/>
+        <div className="register-modal">
+            <div className="modal-wrapper">
+                <img className="fullsize-img little-opacity" src={mainvisual} alt="メイン画像"></img>
+                <InputArea registerAccount={registerAccount}/>
+            </div>
         </div>
     );
 }

@@ -53,16 +53,6 @@ const GameInfoView = (props) => {
             </div>
         </div>
     );
-
-    return (
-        <>
-            <p>ユーザーネーム: {userName}</p>
-            <p>現在のチャプター: {currentChapter.chapterName}</p>
-            <p>クリアしたチャプター数: {clearedChapters.length}</p>
-            <p>解いた謎の数: {solvedMysterys.length}</p>
-            <p>アカウント作成日時: {dateStr.toLocaleString()}</p>
-        </>
-    )
 }
 
 export default GameInfoPage;

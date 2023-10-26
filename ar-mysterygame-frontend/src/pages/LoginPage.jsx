@@ -38,6 +38,7 @@ const LoginView = () => {
     return (
         <div className="home-content">
             <img className="fullsize-img" src={gameLogo} alt="ロゴ"></img>
+            <p style={{textAlign:"center", fontSize:"18px"}}>本ゲームのプレイには<br/>Googleアカウントでのログインが必要です.</p>
             <button className="start-button" onClick={() => clickLogin()}>ログインして開始</button>
         </div>
     );

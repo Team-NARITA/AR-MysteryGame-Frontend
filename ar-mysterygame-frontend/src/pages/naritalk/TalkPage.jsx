@@ -174,7 +174,7 @@ const ChatArea = () => {
             if (!isClear) {
                 gameServer.post("/v1/chapter/clear/" + chapterId, []);
                 localStorage.setItem(chapterId+".clear", true);
-                setTimeout(() => navigate(-1), 5000);
+                setTimeout(() => navigate(-1), 2000);
             }
             return;
         }

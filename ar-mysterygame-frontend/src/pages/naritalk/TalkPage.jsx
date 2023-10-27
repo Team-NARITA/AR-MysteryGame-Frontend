@@ -110,7 +110,7 @@ const ChatArea = () => {
         chatCtl.addMessage({
             type: "jsx",
             content: (
-                <a href={item.content} target="_blank" rel="noopener noreferrer"><p>{item.content}</p></a>
+                <a href={item.content} target="_blank" rel="noopener noreferrer"><p>{item.title}<br />{item.content}</p></a>
             ),
             self: false,
             username: item.sender,

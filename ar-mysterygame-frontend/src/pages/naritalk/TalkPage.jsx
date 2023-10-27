@@ -142,7 +142,7 @@ const ChatArea = () => {
                     } else {
                         chatCtl.addMessage({
                             type: "text",
-                            content: "「ヒント」と入力するとヒントを見る事ができます",
+                            content: "回答が数字の場合は半角で入力してください\n「ヒント」と入力するとヒントを見る事ができます",
                             self: false,
                             username: ""
                         })

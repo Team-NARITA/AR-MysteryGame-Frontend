@@ -106,6 +106,20 @@ const ChatArea = () => {
         });
     }
 
+    const reciveUrl = (item) => {
+        chatCtl.addMessage({
+            type: "jsx",
+            content: (
+                <a href={item.content} target="_blank" rel="noopener noreferrer"><p>{item.content}</p></a>
+            ),
+            self: false,
+            username: item.sender,
+            avatar: item.avatar
+        }).then(()=> {
+            setProgress(chapterData.progress);
+        })
+    }
+
     const showSelectButton = (item) => {
         let options = [];
         item.content.forEach((it) => {
@@ -177,6 +191,9 @@ const ChatArea = () => {
                 break;
             case "input":
                 showInput(next);
+                break;
+            case "url":
+                reciveUrl(next);
                 break;
         }
     }

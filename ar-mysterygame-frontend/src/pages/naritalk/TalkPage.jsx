@@ -40,7 +40,7 @@ const ChatArea = () => {
     const navigate = useNavigate();
     const { chapterId } = useParams();
     const [ chapterData, setChapterData ] = useState(null);
-    const [ chatCtl ] = useState(new ChatController({delay:1000}));
+    const [ chatCtl ] = useState(new ChatController({delay:2000}));
     const [ chatLogs, setChatLogs ] = useLocalStorage(chapterId+".logs", []);
     const [ progress, setProgress ] = useLocalStorage(chapterId+".progress", 0);
 
@@ -99,7 +99,8 @@ const ChatArea = () => {
                 </div>
             ),
             self: false,
-            username: item.sender
+            username: item.sender,
+            avatar: item.avatar
         }).then(() => {
             setProgress(chapterData.progress);
         });
